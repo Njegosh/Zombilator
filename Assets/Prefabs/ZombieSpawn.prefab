@@ -48,4 +48,5 @@ MonoBehaviour:
     m_Center: {x: -16.91, y: 1.41, z: 50.82}
     m_Extent: {x: 6.073948, y: 2, z: 6.127388}
   danger: 0
+  zombieType: 0
   canSpawn: 1

@@ -41,10 +41,10 @@ public class Zombi : Enemy
     public override void Tick(Transform _destination){
         if(this.gameObject.active){
         destination = _destination;
+        anim.SetFloat("WalkSpeed",agent.velocity.magnitude);
 
         if(Vector3.Distance(this.transform.position, destination.position)<startDistance){
             ide = true;
-            anim.SetBool("Run", ide);
         }
 
         else if(Vector3.Distance(this.transform.position, destination.position)>giveUpDistance){
@@ -52,7 +52,6 @@ public class Zombi : Enemy
 
             agent.speed = idleSpeed;
             agent.acceleration = idleAccel;
-            anim.SetBool("Run", ide);
         }
 
         if(ide) {
@@ -60,7 +59,6 @@ public class Zombi : Enemy
 
             agent.speed = runSpeed;
             agent.acceleration = runAccel;
-            anim.SetBool("Run", ide);
         }
         else {
             ti =  ti + 1;

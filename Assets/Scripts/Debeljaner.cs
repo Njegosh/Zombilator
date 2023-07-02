@@ -8,16 +8,9 @@ public class Debeljaner : Enemy
 {
     bool ide = false;
     public float startDistance = 15f;
-    public float giveUpDistance = 30f;
 
     int ti = 0;
     int tr = 5;
-
-    public float idleSpeed = 5;
-    public float idleAccel = 5;
-    
-    public float runSpeed = 17;
-    public float runAccel = 15;
 
     public Animator anim;
     public GameObject particleDeath;
@@ -51,6 +44,8 @@ public class Debeljaner : Enemy
 
     List<Damagable> damaged = new List<Damagable>();
 
+    public bool rolling;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,23 +70,50 @@ public class Debeljaner : Enemy
 
     Vector3 d;
 
+    bool canMove = true;
+    bool boutToExplode = false;
+
     public override void Tick(Transform _destination){
+        if(this.gameObject.active)
         destination = _destination;
+        
         d = destination.position;
 
         damaged = new List<Damagable>();
+
+        if(canMove){
+            ti =  ti + 1;
+            if(ti >= tr){
+                agent.destination = this.transform.position + new Vector3(Random.Range(-15,+15),0, Random.Range(-15,+15));
+                tr = Random.Range(3,100);
+                ti=0;
+            }
+
+            if(Vector3.Distance(this.transform.position, destination.position)<startDistance){
+                canMove = false;
+                anim.SetTrigger("Angry");
+                agent.enabled = false;
+                rb.isKinematic = false;
+                moveWant = this.transform.forward;
+            }
+        }
     }
 
-    void FixedUpdate(){
+
+    void FixedUpdate(){ 
+
+        if(rolling){
         Vector3 p = new Vector3(
             d.x - this.transform.position.x,
             0,
             d.z - this.transform.position.z
         ).normalized;
 
-        moveWant = Vector3.RotateTowards(moveWant, p, turnSpeed * Time.deltaTime, 0).normalized;
+        if(!boutToExplode)
+            moveWant = Vector3.RotateTowards(moveWant, p, turnSpeed * Time.deltaTime, 0).normalized;
+        Vector3 moveWant2 = moveWant  * speed + bounceForce;
 
-        moveTo = Vector3.ClampMagnitude(moveWant * speed + bounceForce, speed);
+        moveTo = Vector3.ClampMagnitude(moveWant2, speed);
 
         graphics.LookAt(moveTo + this.transform.position, Vector3.up);
 
@@ -115,10 +137,11 @@ public class Debeljaner : Enemy
         Debug.DrawLine(this.transform.position, this.transform.position + moveTo, Color.blue);
         Debug.DrawLine(this.transform.position, this.transform.position + moveWant * speed, Color.red);
         Debug.DrawLine(this.transform.position, this.transform.position + bounceForce, Color.cyan);
+        }
     }
 
     void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.layer != 6 && collision.gameObject.layer != 3){
+        if(collision.gameObject.layer != 6 && collision.gameObject.layer != 3 && collision.gameObject.layer != 8){
             ContactPoint contact = collision.contacts[0];
 
             startBounceForce = new Vector3(
@@ -130,9 +153,10 @@ public class Debeljaner : Enemy
                 * moveTo.magnitude;
             
             startBounceForce = Vector3.ClampMagnitude(startBounceForce, maxBounce);
+            moveWant = Vector3.ClampMagnitude(startBounceForce * speed, speed);
                 //* collision.relativeVelocity.magnitude * 10;
                 // * rb.velocity.magnitude; 
-            Debug.Log(collision.relativeVelocity.magnitude);
+
             Debug.DrawLine(this.transform.position, this.transform.position + contact.normal , Color.magenta, 5f);
             bounceForce = startBounceForce;
             brBounce = 0;
@@ -148,11 +172,30 @@ public class Debeljaner : Enemy
         }
     }
 
+    public float hitValue;
     public override void TakeDmg(Effect dmg){
-        if(dmg.source!=EffectSource.Zombi)
+        if(dmg.source!=EffectSource.Zombi){
             hp-=dmg.val;
+            if(dmg.type == EffectType.Push){
+                Debug.Log("PUSHERD");
+                startBounceForce = this.transform.position - dmg.origin;
+                bounceForce = new Vector3(
+                    bounceForce.x,
+                    0,
+                    bounceForce.z
+                );
+                startBounceForce = startBounceForce * dmg.val * hitValue;
+                brBounce = 0;
+                bounced = true;
+                //moveWant = Vector3.ClampMagnitude(startBounceForce, speed);
+            }
+        }
 
-
+        if(hp<=0){
+            anim.SetTrigger("Explode");
+        }
+    }
+    public void Die(){
         if(hp<=0){
             Instantiate(particleDeath,this.transform.position,particleDeath.transform.rotation);
             manager.Kill(this);

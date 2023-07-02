@@ -45,7 +45,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -54,7 +54,7 @@ Light:
     m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -84,7 +84,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -167,16 +167,16 @@ MonoBehaviour:
     key1: {r: 0.9292453, g: 0.97241765, b: 1, a: 1}
     key2: {r: 0.5762727, g: 0.63514596, b: 0.6603774, a: 1}
     key3: {r: 0.18035777, g: 0.18898185, b: 0.1981132, a: 1}
-    key4: {r: 0.08450163, g: 0.081612684, b: 0.13207549, a: 1}
-    key5: {r: 0.084501624, g: 0.08161269, b: 0.13207549, a: 0}
+    key4: {r: 0.14509805, g: 0.15294118, b: 0.15686275, a: 1}
+    key5: {r: 0.34509805, g: 0.43137255, b: 0.5019608, a: 0}
     key6: {r: 0.34509805, g: 0.43137255, b: 0.5019608, a: 0}
     key7: {r: 0.34509805, g: 0.43137255, b: 0.5019608, a: 0}
     ctime0: 0
     ctime1: 5783
     ctime2: 35659
     ctime3: 41827
-    ctime4: 45296
-    ctime5: 64571
+    ctime4: 64571
+    ctime5: 65535
     ctime6: 65535
     ctime7: 65535
     atime0: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 7
+    m_NumColorKeys: 6
     m_NumAlphaKeys: 5
   equatorColors:
     serializedVersion: 2
@@ -196,8 +196,8 @@ MonoBehaviour:
     key1: {r: 0.995283, g: 0.99818575, b: 1, a: 1}
     key2: {r: 0.9292453, g: 0.9745283, b: 1, a: 1}
     key3: {r: 0.5660378, g: 0.24280055, b: 0.1308295, a: 1}
-    key4: {r: 0.08450163, g: 0.081612684, b: 0.13207549, a: 1}
-    key5: {r: 0.09967922, g: 0.09215088, b: 0.1359073, a: 0}
+    key4: {r: 0.14117648, g: 0.14509805, b: 0.15294118, a: 1}
+    key5: {r: 0.13883945, g: 0.14368103, b: 0.1509434, a: 0}
     key6: {r: 0.3679245, g: 0.28572235, b: 0.25858846, a: 0}
     key7: {r: 1, g: 0.71726745, b: 0.36320752, a: 0}
     ctime0: 0
@@ -277,12 +277,12 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 7
     m_NumAlphaKeys: 2
-  speed: 10
+  speed: 0.5
   earth: {fileID: 8309244315250344888}
   sun: {fileID: 8309244316271681942}
   moon: {fileID: 8309244314734995907}
   TimeTest: 0
-  timeInput: 0
+  timeInput: 0.4
 --- !u!1 &8309244315250344888
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8309244315250344888}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.14303088, y: 0.37806964, z: -0.059245333, w: 0.9127407}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -359,8 +359,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.9562876, b: 0.8737507, a: 1}
+  m_Intensity: 0.6117958
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -399,7 +399,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

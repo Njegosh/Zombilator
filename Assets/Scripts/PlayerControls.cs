@@ -16,7 +16,7 @@ public class PlayerControls : Damagable
     [SerializeField]
     float coyoteTime;
 
-    int layerMask = 0b_11001101;
+    int layerMask = 0b_110011011;
 
     public Transform cameraAim;
     
