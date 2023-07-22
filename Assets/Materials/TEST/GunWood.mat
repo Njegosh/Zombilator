@@ -8,15 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GunWood
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0c73791e855a0ca428d2bf0bab2e20cd,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -73,12 +73,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TerrainHolesTexture:
-        m_Texture: {fileID: 0}
+    - _Texture2DAsset_8f063325f3ee4c89897b00f32eb48305_Out_0:
+        m_Texture: {fileID: 2800000, guid: 91af65d72b3f7c845931f2d92c027e06, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_b3a64f438d5846d6b481a0dd0c221114_Out_0:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_c175f6f4be1e451880f9c171c0f9f35c_Out_0:
+        m_Texture: {fileID: 2800000, guid: 91af65d72b3f7c845931f2d92c027e06, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -97,7 +101,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _Broj: 1.19
+    - _Broj: 0.72
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
@@ -112,29 +116,29 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimIntesity: 2
-    - _RimMult: 4
-    - _RimPercentage: 0.6
+    - _RimMult: 0
+    - _RimPercentage: 0.7
     - _RimSoftness: 0.05
-    - _Smoothness: 0.2
+    - _Smoothness: 0.4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 0.5764706, g: 0.31764707, b: 0.20392157, a: 1}
-    - _Color: {r: 0.57647055, g: 0.31764704, b: 0.20392153, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Blood_Color: {r: 1, g: 0.13679245, b: 0.44887304, a: 1}
+    - _Bone_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
+    - _Color: {r: 0.43529415, g: 0.25882354, b: 0.18823531, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0, g: 0, b: 0, a: 1}

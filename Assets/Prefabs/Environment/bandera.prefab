@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2325237178438177806}
   - component: {fileID: 549458589488914628}
   - component: {fileID: 4716793062671276367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bandera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8790023589149242519}
   - component: {fileID: 6785241750433435084}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 8699481930546171420}
   - component: {fileID: 8699481930546171421}
   - component: {fileID: 8699481930546171422}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

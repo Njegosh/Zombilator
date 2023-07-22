@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 8834685583102349652}
   - component: {fileID: 8834685583102349643}
   - component: {fileID: 8834685583102349653}
+  - component: {fileID: 4978560821642235876}
   m_Layer: 2
   m_Name: Pickup Shotgun
   m_TagString: Untagged
@@ -187,6 +188,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &4978560821642235876
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8834685583102349641}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1179903257872cc478353fef102ef873, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3778016313447193689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +215,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8834685583102349642}
     m_Modifications:
+    - target: {fileID: 5689504741452277197, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}
       propertyPath: m_RootOrder
@@ -207,12 +233,12 @@ PrefabInstance:
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.389
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}
@@ -242,7 +268,7 @@ PrefabInstance:
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 274.96692
       objectReference: {fileID: 0}
     - target: {fileID: 5689504741452277200, guid: 1f0ae3864d3328e4aa4e5b7ad2256519,
         type: 3}

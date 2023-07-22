@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2609533713180832376}
   - component: {fileID: 212777538879198230}
   - component: {fileID: 4577891335559671090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7768282929564494889}
   - component: {fileID: 8436396557752683372}
   - component: {fileID: 6459360586923817071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4581857339106839884}
   - component: {fileID: 2545770874644040986}
   - component: {fileID: 25101643350394702}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

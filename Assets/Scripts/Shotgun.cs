@@ -16,6 +16,8 @@ public class Shotgun : Usable
     public Transform spawnPlace;
     public GameObject bullets;
 
+    PlayerControls player;
+
 /*
     public override string Name { get => name; set => name = value; }
     public override string Desc { get => desc; set => desc = value; }
@@ -26,6 +28,7 @@ public class Shotgun : Usable
 
     void Start() {
         spawnPlace = this.transform.GetChild(0);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
     }
 
     public override void UseAlt()
@@ -33,10 +36,24 @@ public class Shotgun : Usable
         throw new System.NotImplementedException();
     }
 
+    public int br = 2;
+
     public override void UsePrimary()
     {
-        Instantiate(bullets, spawnPlace);
-        //throw new System.NotImplementedException();
+        if(br>0){
+            Instantiate(bullets, spawnPlace);
+            usableUI.Use();
+            br--;
+            if(br==0){
+                usableUI.Reload();
+                player.DoAnim("Reload");
+            }
+        }
+    }
+    public override void Reload()
+    {
+        usableUI.Reload();
+        player.DoAnim("Reload");
     }
 
     // Update is called once per frame

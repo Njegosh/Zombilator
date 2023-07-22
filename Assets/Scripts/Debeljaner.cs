@@ -46,6 +46,16 @@ public class Debeljaner : Enemy
 
     public bool rolling;
 
+    AudioSource audioSource;
+
+    public List<AudioClip> clipsIdle;
+    public List<AudioClip> clipsAngry;
+    public List<AudioClip> clipsRunning;
+    public AudioClip bounce;
+    public AudioClip umiranje;
+    public int chanceAudio = 5;
+    public int chanceAudioRunning = 5;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +66,7 @@ public class Debeljaner : Enemy
 
         agent = this.GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
+        audioSource = this.GetComponent<AudioSource>();
 
         destination = this.transform;
 
@@ -87,6 +98,11 @@ public class Debeljaner : Enemy
                 agent.destination = this.transform.position + new Vector3(Random.Range(-15,+15),0, Random.Range(-15,+15));
                 tr = Random.Range(3,100);
                 ti=0;
+                if(Random.Range(0,100)<=chanceAudio){
+                    audioSource.enabled = true;
+                    audioSource.volume = 0.5f;
+                    audioSource.PlayOneShot(clipsIdle[Random.Range(0,clipsIdle.Count)]);
+                }
             }
 
             if(Vector3.Distance(this.transform.position, destination.position)<startDistance){
@@ -95,6 +111,7 @@ public class Debeljaner : Enemy
                 agent.enabled = false;
                 rb.isKinematic = false;
                 moveWant = this.transform.forward;
+                audioSource.PlayOneShot(clipsAngry[Random.Range(0,clipsAngry.Count)]);
             }
         }
     }
@@ -108,6 +125,10 @@ public class Debeljaner : Enemy
             0,
             d.z - this.transform.position.z
         ).normalized;
+        if(!audioSource.isPlaying){
+            audioSource.clip = clipsRunning[Random.Range(0,clipsRunning.Count)];
+            audioSource.Play();
+        }
 
         if(!boutToExplode)
             moveWant = Vector3.RotateTowards(moveWant, p, turnSpeed * Time.deltaTime, 0).normalized;
@@ -154,6 +175,8 @@ public class Debeljaner : Enemy
             
             startBounceForce = Vector3.ClampMagnitude(startBounceForce, maxBounce);
             moveWant = Vector3.ClampMagnitude(startBounceForce * speed, speed);
+            
+            audioSource.PlayOneShot(bounce);
                 //* collision.relativeVelocity.magnitude * 10;
                 // * rb.velocity.magnitude; 
 
@@ -187,11 +210,17 @@ public class Debeljaner : Enemy
                 startBounceForce = startBounceForce * dmg.val * hitValue;
                 brBounce = 0;
                 bounced = true;
+                audioSource.PlayOneShot(bounce);
                 //moveWant = Vector3.ClampMagnitude(startBounceForce, speed);
             }
         }
 
         if(hp<=0){
+            boutToExplode = true;
+            audioSource.clip = umiranje;
+            audioSource.Stop();
+            audioSource.volume = 1;
+            audioSource.Play();
             anim.SetTrigger("Explode");
         }
     }

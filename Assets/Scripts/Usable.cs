@@ -7,6 +7,10 @@ public abstract class Usable : Item
 {
     public abstract void UsePrimary();
     public abstract void UseAlt();
+    public abstract void Reload();
+
+    public GameObject usableUIobject;
+    public UsableUI usableUI;
 }
 
 

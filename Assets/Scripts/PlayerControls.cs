@@ -16,7 +16,7 @@ public class PlayerControls : Damagable
     [SerializeField]
     float coyoteTime;
 
-    int layerMask = 0b_110011011;
+    int layerMask = 0b_100000001;
 
     public Transform cameraAim;
     
@@ -37,7 +37,14 @@ public class PlayerControls : Damagable
     public Transform usableHolder;
 
     public Transform hatHolder;
+
+    public Transform usableUIholder;
+    public UsableUI usableUI;
+    public GameObject usableUIgameobject;
     public CinemachineCameraOffset camOffset;
+    public CinemachineBrain cb;
+
+    public GameObject pauseMenu;
 
     void Start()
     {
@@ -70,31 +77,40 @@ public class PlayerControls : Damagable
     public RectTransform playerUIrect;
     public PlayerUI playerUI;
 
-    public 
+    public bool paused;
 
     void Update()
     {
-        camY = cameraAim.position.y;
 
-        mousePos = new Vector3((Input.mousePosition.x / Screen.width) * 2 - 1, (Input.mousePosition.y / Screen.height) * 2 - 1);
-        transpose = new Vector3(mousePos.x , Mathf.Cos(50) * mousePos.y, Mathf.Sin(50) * -mousePos.y);
-
-        camOffset.m_Offset = transpose * camSeeRange;
-
-
-        if(r.isGrounded) camY = this.transform.position.y;
-        
-        cameraAim.position = new Vector3(this.transform.position.x, Mathf.Lerp(cameraAim.position.y, camY, Time.deltaTime * camSpeed) ,this.transform.position.z);
 
         if(usable != null){
             if(Input.GetKeyDown(KeyCode.Mouse0)) usable.UsePrimary();
             if(Input.GetKeyDown(KeyCode.Mouse1)) usable.UseAlt();
+            if(Input.GetKeyDown(KeyCode.R)) usable.Reload();
+        }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            cb.enabled = false;
+            pauseMenu.SetActive(true);
         }
 
-        UI();
+        if(!paused){
+            camY = cameraAim.position.y;
 
-        Kretanje();
-        Ciljaj();
+            mousePos = new Vector3((Input.mousePosition.x / Screen.width) * 2 - 1, (Input.mousePosition.y / Screen.height) * 2 - 1);
+            transpose = new Vector3(mousePos.x , Mathf.Cos(50) * mousePos.y, Mathf.Sin(50) * -mousePos.y);
+
+            camOffset.m_Offset = transpose * camSeeRange;
+
+
+            if(r.isGrounded) camY = this.transform.position.y;
+            
+            cameraAim.position = new Vector3(this.transform.position.x, Mathf.Lerp(cameraAim.position.y, camY, Time.deltaTime * camSpeed) ,this.transform.position.z);
+            UI();
+
+            Kretanje();
+            Ciljaj();
+            DodatnaAnim();
+        }
     }
     void UI(){
         // CENRIRANJE
@@ -114,13 +130,19 @@ public class PlayerControls : Damagable
         if(i!=-1){
             if(i<3){
                 Destroy(usableObject);
+                Destroy(usableUIgameobject);
                 if(items[i]!=null){
                     usableObject = Instantiate(items[i].Model, usableHolder);
                     usable = usableObject.GetComponent<Usable>();
+
+                    usableUIgameobject = Instantiate(usable.usableUIobject, usableUIholder);
+                    usableUI = usableUIgameobject.GetComponent<UsableUI>();
+                    usable.usableUI = usableUI;
                 }
                 else{
                     usableObject = null;
                     usable = null;
+                    usableUI = null;
                 }
             }
             playerUI.Select(i);
@@ -173,6 +195,23 @@ public class PlayerControls : Damagable
 
     }
 
+    void DodatnaAnim(){
+        //anim.SetLayerWeight()
+        if(usable!=null){
+            int index = anim.GetLayerIndex(usable.Name);
+            anim.SetLayerWeight(index,1);
+        }
+        else{
+            for(int i = 1; i< anim.layerCount; i++){
+                anim.SetLayerWeight(i,0);
+            }
+        }
+    }
+
+    public void DoAnim(string name){
+        anim.SetTrigger(name);
+    }
+
     public bool Equip(Item item){
         Debug.Log(item.ToString());
         Debug.Log(item.GetType());
@@ -189,12 +228,17 @@ public class PlayerControls : Damagable
                     itemSelected = i;
 
                     Destroy(usableObject);
+                    Destroy(usableUIgameobject);
 
                     usableObject = Instantiate(u.gameObject, usableHolder);
                     usable = usableObject.GetComponent<Usable>();
 
                     playerUI.UpdateItem(itemSelected, usable);
                     playerUI.Select(itemSelected);
+
+                    usableUIgameobject = Instantiate(usable.usableUIobject, usableUIholder);
+                    usableUI = usableUIgameobject.GetComponent<UsableUI>();
+                    usable.usableUI = usableUI;
                     
                     return true;
                 }

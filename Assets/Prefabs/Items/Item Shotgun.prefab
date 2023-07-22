@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3666952762928095489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.639, z: 0}
+  m_LocalPosition: {x: 0, y: -3.815, z: 0.307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,8 +94,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de2b86ba5feaff74e92a811d1e6ec655, type: 2}
-  - {fileID: 2100000, guid: 27d72efecebe67d4384cecd60a2b1ba8, type: 2}
+  - {fileID: 2100000, guid: 8913c9c3d54c2af488223630177e7999, type: 2}
+  - {fileID: 2100000, guid: f284892d103eff144b3696f9c39bb7ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,5 +133,8 @@ MonoBehaviour:
   Desc: 
   Icon: {fileID: 21300000, guid: bf3986e64378c1f46a8517ccf2764640, type: 3}
   Model: {fileID: 5060467329472024055}
+  usableUIobject: {fileID: 1583964614365512873, guid: 4a0e69626560a5b4bbdb73fb0baf5dbf,
+    type: 3}
   spawnPlace: {fileID: 5321194669391553253}
   bullets: {fileID: 4296644113266706320, guid: aa539f29621805c48adde6108c273f71, type: 3}
+  br: 2
