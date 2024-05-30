@@ -107,14 +107,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1 &8309244315191742521
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +191,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 6
     m_NumAlphaKeys: 5
   equatorColors:
@@ -217,6 +221,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 8
     m_NumAlphaKeys: 5
   groundColors:
@@ -225,17 +230,17 @@ MonoBehaviour:
     key1: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
     key2: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
     key3: {r: 0.084501624, g: 0.08161269, b: 0.13207549, a: 1}
-    key4: {r: 0.084501624, g: 0.08161269, b: 0.13207549, a: 1}
-    key5: {r: 0.084501624, g: 0.08161269, b: 0.13207549, a: 0}
-    key6: {r: 1, g: 0.71726745, b: 0.36320752, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 1}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 6554
     ctime2: 36623
     ctime3: 45489
-    ctime4: 65535
-    ctime5: 64571
-    ctime6: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
     ctime7: 0
     atime0: 0
     atime1: 20239
@@ -246,6 +251,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 4
     m_NumAlphaKeys: 5
   sunColors:
@@ -275,9 +281,10 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 7
     m_NumAlphaKeys: 2
-  speed: 0.5
+  speed: 1
   earth: {fileID: 8309244315250344888}
   sun: {fileID: 8309244316271681942}
   moon: {fileID: 8309244314734995907}
@@ -422,11 +429,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1

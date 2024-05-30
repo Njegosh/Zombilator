@@ -76,8 +76,11 @@ public class PlayerControls : Damagable
 
     public RectTransform playerUIrect;
     public PlayerUI playerUI;
+    public RectTransform dedUI;
 
     public bool paused;
+
+    public GameObject particleDeath;
 
     void Update()
     {
@@ -272,7 +275,9 @@ public class PlayerControls : Damagable
             playerUI.DangerHp(true);
         }
         if(hp<=0){
-            //Instantiate(particleDeath,this.transform.position,particleDeath.transform.rotation);
+            Instantiate(particleDeath,this.transform.position,particleDeath.transform.rotation);
+            dedUI.gameObject.SetActive(true);
+            Destroy(this.gameObject);
         }
     }
 }
