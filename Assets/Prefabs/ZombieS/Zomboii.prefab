@@ -591,7 +591,7 @@ MonoBehaviour:
   runSpeed: 22
   runAccel: 20
   anim: {fileID: 2716939487287035562}
-  particleDeath: {fileID: 2308425274490411725, guid: b031e2116d6457344b206f2338d5ac0b,
+  particleDeath: {fileID: 2308425274490411725, guid: 2ebbd4c9743251e428665799486495d5,
     type: 3}
   clipsIdle:
   - {fileID: 8300000, guid: 4cb6b392bcbcb8c49a1e0c0cec7798a2, type: 3}
